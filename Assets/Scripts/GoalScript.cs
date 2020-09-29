@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal : MonoBehaviour
+public class GoalScript : MonoBehaviour
 {
-    // [SerializeField]
-    // private LayerMask BallMask;
+    [SerializeField]
+    private LayerMask BallMask;
 
-    // [SerializeField]
-    // private LayerMask PlayerMask;
+    [SerializeField]
+    private GameManager gameManager;
 
-    // // private GameObject
+    
 
     // [SerializeField]
     // private GameManager gameManager;
@@ -26,11 +26,18 @@ public class Goal : MonoBehaviour
         
     }
 
-    
-    // void OnTriggerEnter(Collider other)
-    // {
-    //     // if((PlayerMask.value & (1 << other.gameObject.layer)) > 0){ 
-            
-    //     // }
-    // }
+
+    //void OnTriggerEnter(Collider other) {
+    //    if ((BallMask.value & (1 << other.gameObject.layer)) > 0) {
+    //        Destroy(other.gameObject);
+    //        gameManager.StartGame();
+    //    }
+    //}
+
+    public void OnCollisionEnter(Collision collision) {
+        if ((BallMask.value & (1 << collision.gameObject.layer)) > 0) { 
+            Destroy(collision.gameObject);
+            gameManager.Goal(gameObject.tag);
+        }
+    }
 }

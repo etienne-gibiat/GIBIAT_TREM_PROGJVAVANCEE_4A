@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockWallScript : MonoBehaviour
+public class OnClickScript : MonoBehaviour
 {
-
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +15,4 @@ public class BlockWallScript : MonoBehaviour
     {
         
     }
-
-   
-  
 }
