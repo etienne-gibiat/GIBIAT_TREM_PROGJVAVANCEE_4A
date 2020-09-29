@@ -123,13 +123,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b84a33741ff3b42875ccb3a7cb7b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 1
   WallMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   PlayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   Direction: {x: -1, y: 0, z: 0}
   joueur1: {fileID: 6103685250198798463, guid: 552bb8d4b675f624a81608226b61ad6f, type: 3}
   joueur2: {fileID: 8853875936687925298, guid: 18496435d2bff094f9f74f9584645b57, type: 3}
