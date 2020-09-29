@@ -17,6 +17,7 @@ public class PlayerDeplacementScript : MonoBehaviour
 
     [SerializeField]
     private string AxisFire1Name;
+
     [SerializeField]
     private string AxisFire2Name;
 
@@ -49,11 +50,6 @@ public class PlayerDeplacementScript : MonoBehaviour
             direction += Vector3.back;
         }
 
-        
-        if (Input.GetAxisRaw(AxisFire1Name) == 0)
-        {
-            m_isAxisInUse = false;
-        }
 
         if (Input.GetAxisRaw(AxisFire1Name) > 0 && m_isAxisInUse == false)
         {
@@ -61,12 +57,20 @@ public class PlayerDeplacementScript : MonoBehaviour
             rb.velocity = direction * speed * dash;
             // Call your event function here.
             m_isAxisInUse = true;
+            StartCoroutine(nextDash());
         }
         else{
+            direction.Normalize();
             rb.velocity = direction * speed;
             // gameObject.transform.position += direction * Time.deltaTime * speed;
         }
         
+    }
+
+    IEnumerator nextDash()
+    {
+        yield return new WaitForSeconds(2.0f);
+        m_isAxisInUse = false;
     }
 
 }
