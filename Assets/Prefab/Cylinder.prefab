@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4228323218219888250}
   - component: {fileID: 4228323218219888251}
   - component: {fileID: 4228323218219888248}
+  - component: {fileID: 4962874628257004737}
   m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
@@ -125,6 +126,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  WallMask:
+    serializedVersion: 2
+    m_Bits: 256
+  PlayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  GoalMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  joueur1: {fileID: 0}
+  joueur2: {fileID: 0}
+--- !u!114 &4962874628257004737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228323218219888249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9306a679efde8c049824a306db4aa4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
   WallMask:
     serializedVersion: 2
     m_Bits: 256

@@ -36,6 +36,8 @@ public class BallDeplacementScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //joueur1 = GameObject.Find("Player gauche");
+        //joueur2 = GameObject.Find("Player droite");
         float xDirection = Random.Range(-0.5f, 0.5f);
         float zDirection = Random.Range(-0.5f, 0.5f);
         Direction = new Vector3(xDirection, 0.0f, zDirection);
@@ -88,8 +90,8 @@ public class BallDeplacementScript : MonoBehaviour
             xDirection = Random.Range(-0.5f, 0f);
             zDirection = Random.Range(-0.5f, 0f);
         }
-        Direction = new Vector3(xDirection, 0.0f, zDirection);
-        Direction = new Vector3(Direction.x, Direction.y, -Direction.z);
+        Direction = new Vector3(xDirection, 0.0f, -zDirection);
+        //Direction = new Vector3(xDirection, Direction.y, -zDirection);
         Direction.Normalize();
     }
 
@@ -97,7 +99,8 @@ public class BallDeplacementScript : MonoBehaviour
         if ((WallMask.value & (1 << collision.gameObject.layer)) > 0) {
             Debug.Log("WallColision");
 
-            Direction = new Vector3(Direction.x, Direction.y, -Direction.z);
+            //Direction = new Vector3(Direction.x, Direction.y, -Direction.z);
+            Direction = Vector3.Reflect(Direction, Vector3.forward);
             speed += 1.5f;
         }
         else if ((PlayerMask.value & (1 << collision.gameObject.layer)) > 0) {
@@ -110,7 +113,8 @@ public class BallDeplacementScript : MonoBehaviour
                 attrapegauche = true;
             }
 
-            Direction = new Vector3(-Direction.x, Direction.y, Direction.z);
+            //Direction = new Vector3(-Direction.x, Direction.y, Direction.z);
+            Direction = Vector3.Reflect(Direction, Vector3.right);
             Direction.Normalize();
             speed += 1f;
             //gameObject.transform.position = joueur.gameObject.transform.position;
