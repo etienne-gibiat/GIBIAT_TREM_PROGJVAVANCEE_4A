@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Text textWinner;
 
+    [SerializeField]
+    private NavMeshAgent agent;
+
+
+    private GameObject ball;
+
 
     public int scoreJ1 = 0;
 
@@ -34,16 +41,26 @@ public class GameManager : MonoBehaviour
         textWinner.gameObject.SetActive(false);
         StartGame();
         StartCoroutine(Timer());
+        //ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
+        //playerDeplacementScript.ballDeplacementScript = ballDeplacementScript;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        agent.SetDestination(ball.transform.position);
+        //ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
+        //playerDeplacementScript.ballDeplacementScript = ballDeplacementScript;
+        if (agent.remainingDistance != Mathf.Infinity && agent.remainingDistance <= agent.stoppingDistance) {
+            Debug.Log("getball");
+            //ballDeplacementScript.Tirer(true);
+        }
+
     }
 
     public void StartGame() {
-        Instantiate<GameObject>(BallPrefab, new Vector3(-5.5f, 0.75f, 0f), Quaternion.identity);
+        ball = Instantiate<GameObject>(BallPrefab, new Vector3(-5.5f, 0.75f, 0f), Quaternion.identity) as GameObject;
+        agent.SetDestination(ball.transform.position);
     }
 
     public void Goal(string goal) {

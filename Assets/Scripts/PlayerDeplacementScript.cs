@@ -21,10 +21,12 @@ public class PlayerDeplacementScript : MonoBehaviour
     [SerializeField]
     private string AxisFire2Name;
 
+    //public BallDeplacementScript ballDeplacementScript;
+
     Rigidbody rb;
     private bool m_isAxisInUse = false;
 
-    bool wallForward, wallBack, wallLeft, wallRight;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,20 +37,23 @@ public class PlayerDeplacementScript : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 direction = Vector3.zero;
-        if(Input.GetAxisRaw(AxisHorizontalName) < 0){
-            direction += Vector3.right;
-        }
-        
-        if(Input.GetAxisRaw(AxisHorizontalName) > 0){
-            direction += Vector3.left;
-        }
-        if(Input.GetAxisRaw(AxisVerticalName) < 0){
-            direction += Vector3.forward;
-        }
-        
-        if(Input.GetAxisRaw(AxisVerticalName) > 0){
-            direction += Vector3.back;
-        }
+        //Debug.Log(ballDeplacementScript.attrapegauche);
+        //if (!ballDeplacementScript.attrapegauche) {
+            if (Input.GetAxisRaw(AxisHorizontalName) < 0) {
+                direction += Vector3.right;
+            }
+
+            if (Input.GetAxisRaw(AxisHorizontalName) > 0) {
+                direction += Vector3.left;
+            }
+            if (Input.GetAxisRaw(AxisVerticalName) < 0) {
+                direction += Vector3.forward;
+            }
+
+            if (Input.GetAxisRaw(AxisVerticalName) > 0) {
+                direction += Vector3.back;
+            }
+        //}
 
 
         if (Input.GetAxisRaw(AxisFire1Name) > 0 && m_isAxisInUse == false)
@@ -69,7 +74,7 @@ public class PlayerDeplacementScript : MonoBehaviour
 
     IEnumerator nextDash()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.5f);
         m_isAxisInUse = false;
     }
 
