@@ -26,9 +26,9 @@ public class BallDeplacementScript : MonoBehaviour
     private Vector3 Direction = Vector3.left;
 
 
-    private bool attrapedroite = false;
+    public bool attrapedroite = false;
 
-    private bool attrapegauche = false;
+    public bool attrapegauche = false;
 
     Rigidbody rb;
 
@@ -47,6 +47,7 @@ public class BallDeplacementScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         if (!attrapedroite && !attrapegauche) {
             //    Direction.Normalize();
             //rb.velocity = Direction * speed;
@@ -54,11 +55,11 @@ public class BallDeplacementScript : MonoBehaviour
         }
         else if (attrapedroite) {
             Transform joueur = joueur1.gameObject.transform;
-            gameObject.transform.parent = joueur1.gameObject.transform;
+            //gameObject.transform.parent = joueur1.gameObject.transform;
         }
         else if (attrapegauche) {
             Transform joueur = joueur2.gameObject.transform;
-            gameObject.transform.parent = joueur2.gameObject.transform;
+            //gameObject.transform.parent = joueur2.gameObject.transform;
         }
 
         if (Input.GetAxisRaw("Fire1") > 0 && attrapedroite) {
