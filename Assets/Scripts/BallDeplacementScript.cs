@@ -49,14 +49,16 @@ public class BallDeplacementScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        //rb.velocity = Vector3.zero;
         if (!attrapedroite && !attrapegauche) {
             //    Direction.Normalize();
-            //rb.velocity = Direction * speed;
+            
             gameObject.transform.position += Direction * Time.deltaTime * speed;
         }
         else if (attrapedroite) {
-            
+            Transform joueur = joueur1.gameObject.transform;
+            StartCoroutine(nextTir());
+            //Tirer(true);
             //gameObject.transform.parent = joueur1.gameObject.transform;
         }
         else if (attrapegauche) {
@@ -73,6 +75,12 @@ public class BallDeplacementScript : MonoBehaviour
             
             Tirer(false);
         }
+    }
+
+    IEnumerator nextTir()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Tirer(true);
     }
 
     public void Tirer(bool droite) {
@@ -95,6 +103,10 @@ public class BallDeplacementScript : MonoBehaviour
         //Direction = new Vector3(xDirection, Direction.y, -zDirection);
         Direction.Normalize();
     }
+
+
+    //desactiver le collider au moment de lancer, iskinematic, 
+
 
     public void OnCollisionEnter(Collision collision) {
         if ((WallMask.value & (1 << collision.gameObject.layer)) > 0) {
