@@ -85,7 +85,7 @@ public class PlayerDeplacementScript : MonoBehaviour
             //rb.velocity = direction * speed;
             gameObject.transform.position += direction * Time.deltaTime * speed;
         }
-        Debug.Log(direction);
+        //Debug.Log(direction);
 
     }
 

@@ -30,6 +30,8 @@ public class BallDeplacementScript : MonoBehaviour
 
     public bool attrapegauche = false;
 
+    private bool isInLoopCoroutineTirer = false;
+
     Rigidbody rb;
 
 
@@ -55,7 +57,7 @@ public class BallDeplacementScript : MonoBehaviour
             
             gameObject.transform.position += Direction * Time.deltaTime * speed;
         }
-        else if (attrapedroite) {
+        else if (attrapedroite && !isInLoopCoroutineTirer) {
             Transform joueur = joueur1.gameObject.transform;
             StartCoroutine(nextTir());
             //Tirer(true);
@@ -79,8 +81,10 @@ public class BallDeplacementScript : MonoBehaviour
 
     IEnumerator nextTir()
     {
+        isInLoopCoroutineTirer = true;
         yield return new WaitForSeconds(0.5f);
         Tirer(true);
+        isInLoopCoroutineTirer = false;
     }
 
     public void Tirer(bool droite) {
