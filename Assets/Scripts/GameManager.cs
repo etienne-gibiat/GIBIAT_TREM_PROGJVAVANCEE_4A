@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private PlayerDeplacementScript joueur2;
 
+    private BallDeplacementScript ballDeplacementScript;
+
     public int scoreJ1 = 0;
 
     public int scoreJ2 = 0;
@@ -46,7 +48,7 @@ public class GameManager : MonoBehaviour
         textWinner.gameObject.SetActive(false);
         StartGame();
         StartCoroutine(Timer());
-        //ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
+        ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
         //playerDeplacementScript.ballDeplacementScript = ballDeplacementScript;
     }
 
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour
             //ballDeplacementScript.Tirer(true);
         }
 
-        if(ball.GetComponent<BallDeplacementScript>().attrapegauche)
+        if(ballDeplacementScript.attrapegauche)
         {
             joueur1.peutmarcher = false;
         }
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
     public void StartGame() {
         ball = Instantiate<GameObject>(BallPrefab, new Vector3(-5.5f, 0.75f, 0f), Quaternion.identity) as GameObject;
         agent.SetDestination(ball.transform.position);
-        BallDeplacementScript ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
+        ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
     }
 
     public void Goal(string goal) {

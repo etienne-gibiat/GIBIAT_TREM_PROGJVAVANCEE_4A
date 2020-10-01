@@ -64,12 +64,12 @@ public class BallDeplacementScript : MonoBehaviour
             //gameObject.transform.parent = joueur2.gameObject.transform;
         }
 
-        if (Input.GetAxisRaw("Fire1") > 0 && attrapedroite) {
+        if (Input.GetAxisRaw("Fire1Sec") > 0 && attrapedroite) {
             
             Tirer(true);
         }
 
-        if (Input.GetAxisRaw("Fire1Sec") > 0 && attrapegauche) {
+        if (Input.GetAxisRaw("Fire1") > 0 && attrapegauche) {
             
             Tirer(false);
         }
