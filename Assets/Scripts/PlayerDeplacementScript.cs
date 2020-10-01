@@ -65,7 +65,7 @@ public class PlayerDeplacementScript : MonoBehaviour
         }
 
         inputDash = Input.GetAxis(AxisFire1Name) > 0 && m_isAxisInUse == false;
-        Debug.Log(direction);
+        //Debug.Log(direction);
     }
 
     // Update is called once per frame
