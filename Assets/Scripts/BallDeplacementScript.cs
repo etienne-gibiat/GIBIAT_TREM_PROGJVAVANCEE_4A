@@ -55,6 +55,8 @@ public class BallDeplacementScript : MonoBehaviour
         }
         else if (attrapedroite) {
             Transform joueur = joueur1.gameObject.transform;
+            //StartCoroutine(nextTir());
+            Tirer(true);
             //gameObject.transform.parent = joueur1.gameObject.transform;
         }
         else if (attrapegauche) {
@@ -72,6 +74,12 @@ public class BallDeplacementScript : MonoBehaviour
             Tirer(false);
         }
     }
+
+  /*  IEnumerator nextTir()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Tirer(true);
+    }*/
 
     public void Tirer(bool droite) {
         float xDirection;
