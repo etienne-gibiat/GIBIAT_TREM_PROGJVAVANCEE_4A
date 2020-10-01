@@ -36,6 +36,8 @@ public class BallDeplacementScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //joueur1 = GameObject.Find("Player gauche");
+        //joueur2 = GameObject.Find("Player droite");
         float xDirection = Random.Range(-0.5f, 0.5f);
         float zDirection = Random.Range(-0.5f, 0.5f);
         Direction = new Vector3(xDirection, 0.0f, zDirection);
@@ -47,20 +49,20 @@ public class BallDeplacementScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        //rb.velocity = Vector3.zero;
         if (!attrapedroite && !attrapegauche) {
             //    Direction.Normalize();
-            //rb.velocity = Direction * speed;
+            
             gameObject.transform.position += Direction * Time.deltaTime * speed;
         }
         else if (attrapedroite) {
             Transform joueur = joueur1.gameObject.transform;
-            //StartCoroutine(nextTir());
-            Tirer(true);
+            StartCoroutine(nextTir());
+            //Tirer(true);
             //gameObject.transform.parent = joueur1.gameObject.transform;
         }
         else if (attrapegauche) {
-            Transform joueur = joueur2.gameObject.transform;
+            
             //gameObject.transform.parent = joueur2.gameObject.transform;
         }
 
@@ -75,11 +77,11 @@ public class BallDeplacementScript : MonoBehaviour
         }
     }
 
-  /*  IEnumerator nextTir()
+    IEnumerator nextTir()
     {
         yield return new WaitForSeconds(0.5f);
         Tirer(true);
-    }*/
+    }
 
     public void Tirer(bool droite) {
         float xDirection;
@@ -97,16 +99,21 @@ public class BallDeplacementScript : MonoBehaviour
             xDirection = Random.Range(-0.5f, 0f);
             zDirection = Random.Range(-0.5f, 0f);
         }
-        Direction = new Vector3(xDirection, 0.0f, zDirection);
-        Direction = new Vector3(Direction.x, Direction.y, -Direction.z);
+        Direction = new Vector3(xDirection, 0.0f, -zDirection);
+        //Direction = new Vector3(xDirection, Direction.y, -zDirection);
         Direction.Normalize();
     }
+
+
+    //desactiver le collider au moment de lancer, iskinematic, 
+
 
     public void OnCollisionEnter(Collision collision) {
         if ((WallMask.value & (1 << collision.gameObject.layer)) > 0) {
             //Debug.Log("WallColision");
 
-            Direction = new Vector3(Direction.x, Direction.y, -Direction.z);
+            //Direction = new Vector3(Direction.x, Direction.y, -Direction.z);
+            Direction = Vector3.Reflect(Direction, Vector3.forward);
             speed += 1.5f;
         }
         else if ((PlayerMask.value & (1 << collision.gameObject.layer)) > 0) {
@@ -119,7 +126,8 @@ public class BallDeplacementScript : MonoBehaviour
                 attrapegauche = true;
             }
 
-            Direction = new Vector3(-Direction.x, Direction.y, Direction.z);
+            //Direction = new Vector3(-Direction.x, Direction.y, Direction.z);
+            Direction = Vector3.Reflect(Direction, Vector3.right);
             Direction.Normalize();
             speed += 1f;
             //gameObject.transform.position = joueur.gameObject.transform.position;

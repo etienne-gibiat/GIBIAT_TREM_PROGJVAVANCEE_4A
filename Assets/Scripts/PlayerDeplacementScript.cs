@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class PlayerDeplacementScript : MonoBehaviour
 {
@@ -26,6 +27,10 @@ public class PlayerDeplacementScript : MonoBehaviour
     /*[SerializeField]
     Rigidbody rb;*/
     private bool m_isAxisInUse = false;
+    private bool inputDash = false;
+
+    private Vector3 direction;
+
 
     public bool peutmarcher = true;
 
@@ -33,12 +38,11 @@ public class PlayerDeplacementScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        Vector3 direction = Vector3.zero;
+    void Update() {
+        direction = Vector3.zero;
         //Debug.Log(ballDeplacementScript.attrapegauche);
         //if (gamemanager.GetComponent<GameManager>().) 
         //if(gamemanager.GetComponent<BallDeplacementScript>().attrapegauche)
@@ -60,12 +64,18 @@ public class PlayerDeplacementScript : MonoBehaviour
             }
         }
 
+        inputDash = Input.GetAxis(AxisFire1Name) > 0 && m_isAxisInUse == false;
+        Debug.Log(direction);
+    }
 
-        if (Input.GetAxisRaw(AxisFire1Name) > 0 && m_isAxisInUse == false)
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+
+        if (inputDash)
         {
              gameObject.transform.position += direction * Time.deltaTime * speed * dash;
             //rb.velocity = direction * speed * dash;
-
             // Call your event function here.
             m_isAxisInUse = true;
             StartCoroutine(nextDash());
@@ -73,15 +83,24 @@ public class PlayerDeplacementScript : MonoBehaviour
         else{
             direction.Normalize();
             //rb.velocity = direction * speed;
-             gameObject.transform.position += direction * Time.deltaTime * speed;
+            gameObject.transform.position += direction * Time.deltaTime * speed;
         }
-        
+        Debug.Log(direction);
+
     }
+
+    //public void OnCollisionEnter(Collision collision) {
+    //    if ((WallMask.value & (1 << collision.gameObject.layer)) > 0) {
+           
+    //    }
+    //}
 
     IEnumerator nextDash()
     {
         yield return new WaitForSeconds(1.5f);
         m_isAxisInUse = false;
     }
+
+
 
 }
