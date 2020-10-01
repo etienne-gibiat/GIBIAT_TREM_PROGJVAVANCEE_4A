@@ -83,10 +83,10 @@ public class BallDeplacementScript : MonoBehaviour
             attrapedroite = false;
             xDirection = Random.Range(0f, 0.5f);
             zDirection = Random.Range(0f, 0.5f);
-            Debug.Log("Raquette droite entree");
+            //Debug.Log("Raquette droite entree");
         }
         else {
-            Debug.Log("Raquette gauche space");
+            //Debug.Log("Raquette gauche space");
             attrapegauche = false;
             xDirection = Random.Range(-0.5f, 0f);
             zDirection = Random.Range(-0.5f, 0f);
@@ -98,7 +98,7 @@ public class BallDeplacementScript : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision) {
         if ((WallMask.value & (1 << collision.gameObject.layer)) > 0) {
-            Debug.Log("WallColision");
+            //Debug.Log("WallColision");
 
             //Direction = new Vector3(Direction.x, Direction.y, -Direction.z);
             Direction = Vector3.Reflect(Direction, Vector3.forward);
@@ -106,11 +106,11 @@ public class BallDeplacementScript : MonoBehaviour
         }
         else if ((PlayerMask.value & (1 << collision.gameObject.layer)) > 0) {
             if (collision.gameObject.tag == "Raquette droite") {
-                Debug.Log("Raquette droite att");
+                //Debug.Log("Raquette droite att");
                 attrapedroite = true;
             }
             else if (collision.gameObject.tag == "Raquette gauche") {
-                Debug.Log("Raquette droite att");
+                //Debug.Log("Raquette droite att");
                 attrapegauche = true;
             }
 

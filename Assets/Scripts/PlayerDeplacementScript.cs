@@ -22,42 +22,47 @@ public class PlayerDeplacementScript : MonoBehaviour
     [SerializeField]
     private string AxisFire2Name;
 
-    //public BallDeplacementScript ballDeplacementScript;
+    public GameManager gamemanager;
 
-    Rigidbody rb;
+    /*[SerializeField]
+    Rigidbody rb;*/
     private bool m_isAxisInUse = false;
     private bool inputDash = false;
 
     private Vector3 direction;
 
 
+    public bool peutmarcher = true;
+
+    
     // Start is called before the first frame update
     void Start()
     {
-      
+        
     }
 
     void Update() {
         direction = Vector3.zero;
         //Debug.Log(ballDeplacementScript.attrapegauche);
-        //if (!ballDeplacementScript.attrapegauche) {
-        if (Input.GetAxis(AxisHorizontalName) < 0) {
-            Debug.Log("touche");
-            direction += Vector3.right;
-            Debug.Log(direction);
-        }
+        //if (gamemanager.GetComponent<GameManager>().) 
+        //if(gamemanager.GetComponent<BallDeplacementScript>().attrapegauche)
+        if(peutmarcher)
+        { 
+            if (Input.GetAxisRaw(AxisHorizontalName) < 0) {
+                direction += Vector3.right;
+            }
 
-        if (Input.GetAxis(AxisHorizontalName) > 0) {
-            direction += Vector3.left;
-        }
-        if (Input.GetAxis(AxisVerticalName) < 0) {
-            direction += Vector3.forward;
-        }
+            if (Input.GetAxisRaw(AxisHorizontalName) > 0) {
+                direction += Vector3.left;
+            }
+            if (Input.GetAxisRaw(AxisVerticalName) < 0) {
+                direction += Vector3.forward;
+            }
 
-        if (Input.GetAxis(AxisVerticalName) > 0) {
-            direction += Vector3.back;
+            if (Input.GetAxisRaw(AxisVerticalName) > 0) {
+                direction += Vector3.back;
+            }
         }
-        //}
 
         inputDash = Input.GetAxis(AxisFire1Name) > 0 && m_isAxisInUse == false;
         Debug.Log(direction);
@@ -69,7 +74,7 @@ public class PlayerDeplacementScript : MonoBehaviour
 
         if (inputDash)
         {
-            gameObject.transform.position += direction * Time.deltaTime * speed * dash;
+             gameObject.transform.position += direction * Time.deltaTime * speed * dash;
             //rb.velocity = direction * speed * dash;
             // Call your event function here.
             m_isAxisInUse = true;

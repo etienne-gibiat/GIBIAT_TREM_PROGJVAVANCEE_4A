@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
 
     private GameObject ball;
 
+    [SerializeField]
+    private PlayerDeplacementScript joueur1;
+
+    [SerializeField]
+    private PlayerDeplacementScript joueur2;
 
     public int scoreJ1 = 0;
 
@@ -52,8 +57,17 @@ public class GameManager : MonoBehaviour
         //ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
         //playerDeplacementScript.ballDeplacementScript = ballDeplacementScript;
         if (agent.remainingDistance != Mathf.Infinity && agent.remainingDistance <= agent.stoppingDistance) {
-            Debug.Log("getball");
+            //Debug.Log("getball");
             //ballDeplacementScript.Tirer(true);
+        }
+
+        if(ball.GetComponent<BallDeplacementScript>().attrapegauche)
+        {
+            joueur1.peutmarcher = false;
+        }
+        else
+        {
+            joueur1.peutmarcher = true;
         }
 
     }
