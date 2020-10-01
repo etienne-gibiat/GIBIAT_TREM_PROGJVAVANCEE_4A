@@ -34,6 +34,14 @@ public class BallDeplacementScript : MonoBehaviour
 
     private bool isInLoopCoroutineTirer = false;
 
+    private bool isInLoopCoroutineTirerZigZag = false;
+
+    private float yDirection = 0.0f;
+
+    private int montee1descend2static0 = 0;
+
+    private bool entraindetirer = false;
+
     Rigidbody rb;
 
 
@@ -79,7 +87,20 @@ public class BallDeplacementScript : MonoBehaviour
             
             Tirer(false);
         }
+
+        if (Input.GetAxisRaw("Fire2") > 0 && attrapegauche && !isInLoopCoroutineTirerZigZag)
+        {
+            Debug.Log(isInLoopCoroutineTirerZigZag);
+            StartCoroutine(nextDirectionTir());
+        }
+
+/*        if (Input.GetAxisRaw("escape") > 0)
+        {
+            Debug.Log("echap");
+            Application.LoadLevel("Menu");
+        }*/
     }
+       
 
     IEnumerator nextTir()
     {
@@ -88,6 +109,24 @@ public class BallDeplacementScript : MonoBehaviour
         Tirer(true);
         isInLoopCoroutineTirer = false;
     }
+
+    IEnumerator nextDirectionTir()
+    {
+        isInLoopCoroutineTirerZigZag = true;
+        Debug.Log(isInLoopCoroutineTirerZigZag);
+        TirerZigZag(true);
+        yield return new WaitForSeconds(0.1f);
+        TirerZigZag(true);
+        yield return new WaitForSeconds(0.1f);
+        TirerZigZag(true);
+        yield return new WaitForSeconds(0.1f);
+        TirerZigZag(true);
+        yield return new WaitForSeconds(0.1f);
+        TirerZigZag(true);
+        isInLoopCoroutineTirerZigZag = false;
+    }
+
+
 
     public void Tirer(bool droite) {
         float xDirection;
@@ -106,6 +145,31 @@ public class BallDeplacementScript : MonoBehaviour
             zDirection = Random.Range(-0.5f, 0f);
         }
         Direction = new Vector3(xDirection, 0.0f, -zDirection);
+        //Direction = new Vector3(xDirection, Direction.y, -zDirection);
+        Direction.Normalize();
+    }
+
+    public void TirerZigZag(bool droite)
+    {
+        float xDirection;
+        float zDirection;
+        
+
+        if (droite)
+        {
+            attrapedroite = false;
+            xDirection = Random.Range(0f, 0.5f);
+            zDirection = Random.Range(0f, 0.5f);
+        }
+        else
+        {
+            attrapegauche = false;
+            xDirection = Random.Range(-0.5f, 0f);
+            zDirection = Random.Range(-0.5f, 0f);
+        }
+
+        Direction = Vector3.Reflect(Direction, Vector3.forward);
+
         //Direction = new Vector3(xDirection, Direction.y, -zDirection);
         Direction.Normalize();
     }
