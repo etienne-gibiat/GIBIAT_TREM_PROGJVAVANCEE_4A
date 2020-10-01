@@ -24,6 +24,13 @@ public class PlayerDeplacementScript : MonoBehaviour
 
     public GameManager gamemanager;
 
+    static int UP = 4;
+    static int DOWN = 2;
+    static int RIGHT = 1;
+    static int LEFT = 3;
+
+
+
     /*[SerializeField]
     Rigidbody rb;*/
     private bool m_isAxisInUse = false;
@@ -49,46 +56,52 @@ public class PlayerDeplacementScript : MonoBehaviour
         if(peutmarcher)
         { 
             if (Input.GetAxisRaw(AxisHorizontalName) < 0) {
-                direction += Vector3.right;
+                Deplacement(RIGHT);
             }
 
             if (Input.GetAxisRaw(AxisHorizontalName) > 0) {
-                direction += Vector3.left;
+                Deplacement(LEFT);
             }
             if (Input.GetAxisRaw(AxisVerticalName) < 0) {
-                direction += Vector3.forward;
+                Deplacement(UP);
             }
 
             if (Input.GetAxisRaw(AxisVerticalName) > 0) {
-                direction += Vector3.back;
+                Deplacement(DOWN);
             }
         }
 
-        inputDash = Input.GetAxis(AxisFire1Name) > 0 && m_isAxisInUse == false;
-        Debug.Log(direction);
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-        if (inputDash)
-        {
-             gameObject.transform.position += direction * Time.deltaTime * speed * dash;
-            //rb.velocity = direction * speed * dash;
-            // Call your event function here.
+        if (Input.GetAxis(AxisFire1Name) > 0 && m_isAxisInUse == false) {
+            gameObject.transform.position += direction * Time.deltaTime * speed * dash;
             m_isAxisInUse = true;
             StartCoroutine(nextDash());
         }
-        else{
+        else {
             direction.Normalize();
-            //rb.velocity = direction * speed;
             gameObject.transform.position += direction * Time.deltaTime * speed;
         }
-        Debug.Log(direction);
-
     }
 
+    public void Deplacement(int mouvement) {
+
+        switch (mouvement) {
+            case 1:
+                direction += Vector3.right;
+                break;
+            case 2:
+                direction += Vector3.back;
+                break;
+            case 3:
+                direction += Vector3.left;
+                break;
+            case 4:
+                direction += Vector3.forward;
+                break;
+            default:
+                break;
+        }
+
+    }
     //public void OnCollisionEnter(Collision collision) {
     //    if ((WallMask.value & (1 << collision.gameObject.layer)) > 0) {
            

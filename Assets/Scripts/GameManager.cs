@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     private BallDeplacementScript ballDeplacementScript;
 
+    public int typeIA = 0;
+
     public int scoreJ1 = 0;
 
     public int scoreJ2 = 0;
@@ -76,7 +78,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame() {
         ball = Instantiate<GameObject>(BallPrefab, new Vector3(-5.5f, 0.75f, 0f), Quaternion.identity) as GameObject;
-        agent.SetDestination(ball.transform.position);
+        //agent.SetDestination(ball.transform.position);
         ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
     }
 
