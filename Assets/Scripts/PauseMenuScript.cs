@@ -36,4 +36,14 @@ public class PauseMenuScript : MonoBehaviour
     {
         isActive = !isActive;
     }
+
+    public void MAIN_MENU_BUTTON()
+    {
+        Application.LoadLevel("Menu");
+    }
+
+    public void QUIT_BUTTON()
+    {
+        Application.Quit();
+    }
 }
