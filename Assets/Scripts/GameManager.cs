@@ -36,13 +36,23 @@ public class GameManager : MonoBehaviour
 
     private BallDeplacementScript ballDeplacementScript;
 
-    public int typeIA = 0;
+    public int typeIA = 1;
 
     public int scoreJ1 = 0;
 
     public int scoreJ2 = 0;
 
     public int timer = 60;
+
+    private const int BUTTONA = 5;
+    private const int BUTTONB = 4;
+    private const int RIGHT = 0;
+    private const int DOWN = 1;
+    private const int LEFT = 2;
+    private const int UP = 3;
+    private bool iARandomWait = false;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,20 +61,48 @@ public class GameManager : MonoBehaviour
         StartGame();
         StartCoroutine(Timer());
         ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
+        if(typeIA == 1) {
+            ballDeplacementScript.estIA = true;
+        }
         //playerDeplacementScript.ballDeplacementScript = ballDeplacementScript;
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(ball.transform.position);
-        //ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
-        //playerDeplacementScript.ballDeplacementScript = ballDeplacementScript;
-        if (agent.remainingDistance != Mathf.Infinity && agent.remainingDistance <= agent.stoppingDistance) {
-            //Debug.Log("getball");
-            //ballDeplacementScript.Tirer(true);
+        if(typeIA == 0) {
+            agent.SetDestination(ball.transform.position);
+        }else if (typeIA == 1 && !iARandomWait) {
+            int randomAction = Random.Range(0, 6);
+            switch (randomAction) {
+                case RIGHT:
+                    joueur2.Deplacement(RIGHT);
+                    break;
+                case DOWN:
+                    joueur2.Deplacement(DOWN);
+                    break;
+                case LEFT:
+                    joueur2.Deplacement(LEFT);
+                    break;
+                case UP:
+                    joueur2.Deplacement(UP);
+                    break;
+                case BUTTONB:
+                    
+                    break;
+                case BUTTONA:
+                    if (ballDeplacementScript.attrapedroite) {
+                        ballDeplacementScript.Tirer(true);
+                    }
+                    break;
+                default:
+                    Debug.Log("swicht");
+                    break;
+            }
+            iARandomWait = true;
+            StartCoroutine(IAWait());
         }
-
+        
         if(ballDeplacementScript.attrapegauche)
         {
             joueur1.peutmarcher = false;
@@ -74,12 +112,21 @@ public class GameManager : MonoBehaviour
             joueur1.peutmarcher = true;
         }
 
+        if (ballDeplacementScript.attrapedroite) {
+            joueur2.peutmarcher = false;
+        }
+        else {
+            joueur2.peutmarcher = true;
+        }
+
     }
 
     public void StartGame() {
         ball = Instantiate<GameObject>(BallPrefab, new Vector3(-5.5f, 0.75f, 0f), Quaternion.identity) as GameObject;
-        //agent.SetDestination(ball.transform.position);
         ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
+        if (typeIA == 1) {
+            ballDeplacementScript.estIA = true;
+        }
     }
 
     public void Goal(string goal) {
@@ -94,7 +141,12 @@ public class GameManager : MonoBehaviour
         StartGame();
     }
 
-    private IEnumerator Timer() {
+    private IEnumerator IAWait() {
+        yield return new WaitForSeconds(0.2f);
+        iARandomWait = false;
+    }
+
+        private IEnumerator Timer() {
         while (timer > 0) {
 
             yield return new WaitForSeconds(1);

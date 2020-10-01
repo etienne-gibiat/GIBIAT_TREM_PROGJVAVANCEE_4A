@@ -25,6 +25,8 @@ public class BallDeplacementScript : MonoBehaviour
 
     private Vector3 Direction = Vector3.left;
 
+    public bool estIA;
+
 
     public bool attrapedroite = false;
 
@@ -57,7 +59,7 @@ public class BallDeplacementScript : MonoBehaviour
             
             gameObject.transform.position += Direction * Time.deltaTime * speed;
         }
-        else if (attrapedroite && !isInLoopCoroutineTirer) {
+        else if (attrapedroite && !isInLoopCoroutineTirer && !estIA) {
             Transform joueur = joueur1.gameObject.transform;
             StartCoroutine(nextTir());
             //Tirer(true);

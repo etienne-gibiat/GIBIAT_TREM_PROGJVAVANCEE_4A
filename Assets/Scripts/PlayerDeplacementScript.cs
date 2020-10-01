@@ -22,12 +22,14 @@ public class PlayerDeplacementScript : MonoBehaviour
     [SerializeField]
     private string AxisFire2Name;
 
-    public GameManager gamemanager;
 
-    static int UP = 4;
-    static int DOWN = 2;
-    static int RIGHT = 1;
-    static int LEFT = 3;
+    const int UP = 3;
+    const int DOWN = 1;
+    const int RIGHT = 0;
+    const int LEFT = 2;
+
+    [SerializeField]
+    bool estIA;
 
 
 
@@ -49,12 +51,8 @@ public class PlayerDeplacementScript : MonoBehaviour
     }
 
     void Update() {
-        direction = Vector3.zero;
-        //Debug.Log(ballDeplacementScript.attrapegauche);
-        //if (gamemanager.GetComponent<GameManager>().) 
-        //if(gamemanager.GetComponent<BallDeplacementScript>().attrapegauche)
-        if(peutmarcher)
-        { 
+       
+        
             if (Input.GetAxisRaw(AxisHorizontalName) < 0) {
                 Deplacement(RIGHT);
             }
@@ -69,44 +67,44 @@ public class PlayerDeplacementScript : MonoBehaviour
             if (Input.GetAxisRaw(AxisVerticalName) > 0) {
                 Deplacement(DOWN);
             }
-        }
+        
 
         if (Input.GetAxis(AxisFire1Name) > 0 && m_isAxisInUse == false) {
             gameObject.transform.position += direction * Time.deltaTime * speed * dash;
             m_isAxisInUse = true;
             StartCoroutine(nextDash());
         }
-        else {
+        else if (peutmarcher) {
             direction.Normalize();
             gameObject.transform.position += direction * Time.deltaTime * speed;
+        }
+        if (!estIA) {
+            direction = Vector3.zero;
         }
     }
 
     public void Deplacement(int mouvement) {
-
+        
+    if (peutmarcher) {
         switch (mouvement) {
-            case 1:
+            case RIGHT:
                 direction += Vector3.right;
                 break;
-            case 2:
+            case DOWN:
                 direction += Vector3.back;
                 break;
-            case 3:
+            case LEFT:
                 direction += Vector3.left;
                 break;
-            case 4:
+            case UP:
                 direction += Vector3.forward;
                 break;
             default:
                 break;
         }
+    }
 
     }
-    //public void OnCollisionEnter(Collision collision) {
-    //    if ((WallMask.value & (1 << collision.gameObject.layer)) > 0) {
-           
-    //    }
-    //}
 
     IEnumerator nextDash()
     {
