@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenuScript : MonoBehaviour
 {
     [SerializeField]
     GameObject menuObject;
-    private bool isActive = false;
+
+    [SerializeField]
+    Text resumeButton;
+
+    public bool isActive = false;
+    public bool isEnd = false;
 
     // Update is called once per frame
     void Update()
@@ -25,8 +31,12 @@ public class PauseMenuScript : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
         }
+
+        if (isEnd) {
+            resumeButton.text = "Restart";
+        }
         
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && !isEnd)
         {
             RESUME_BUTTON();
         }
@@ -34,7 +44,12 @@ public class PauseMenuScript : MonoBehaviour
 
     public void RESUME_BUTTON()
     {
-        isActive = !isActive;
+        if (!isEnd) {
+            isActive = !isActive;
+        }
+        else {
+            Application.LoadLevel("mainScene");
+        }
     }
 
     public void MAIN_MENU_BUTTON()
