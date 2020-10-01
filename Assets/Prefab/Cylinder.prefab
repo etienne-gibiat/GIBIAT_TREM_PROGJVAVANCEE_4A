@@ -110,7 +110,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 126
   m_CollisionDetection: 1
 --- !u!114 &4228323218219888248
 MonoBehaviour:
@@ -136,3 +136,5 @@ MonoBehaviour:
     m_Bits: 4096
   joueur1: {fileID: 8506903102755383141, guid: 552bb8d4b675f624a81608226b61ad6f, type: 3}
   joueur2: {fileID: 1039951206959666714, guid: 18496435d2bff094f9f74f9584645b57, type: 3}
+  attrapedroite: 0
+  attrapegauche: 0

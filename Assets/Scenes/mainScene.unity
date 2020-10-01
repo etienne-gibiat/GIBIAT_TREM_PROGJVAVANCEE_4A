@@ -398,6 +398,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &387961807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1039951206959666714, guid: 18496435d2bff094f9f74f9584645b57,
+    type: 3}
+  m_PrefabInstance: {fileID: 1039951205896568648}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3fa2ba3099a2f24788c29d5f50da5cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &396380514
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +685,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: GoalJ2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174962806651772243, guid: f6a14bb19302f7442b7c8675bd4c26a9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174962806651772243, guid: f6a14bb19302f7442b7c8675bd4c26a9,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4174962806651772255, guid: f6a14bb19302f7442b7c8675bd4c26a9,
         type: 3}
@@ -1052,6 +1074,8 @@ MonoBehaviour:
   textTimer: {fileID: 1716635931}
   textWinner: {fileID: 606296427}
   agent: {fileID: 1101392216}
+  joueur1: {fileID: 1758740812}
+  joueur2: {fileID: 387961807}
   scoreJ1: 0
   scoreJ2: 0
   timer: 60
@@ -1083,8 +1107,8 @@ GameObject:
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &1174064673
 MeshCollider:
@@ -1316,6 +1340,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: RebondWall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5451906194956320993, guid: e4ce97955555d1a42a642802894f3ce1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451906194956320993, guid: e4ce97955555d1a42a642802894f3ce1,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5451906194956320994, guid: e4ce97955555d1a42a642802894f3ce1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1427,8 +1461,8 @@ GameObject:
   m_Name: Plane (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1371799381
 Transform:
@@ -1795,6 +1829,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716635929}
   m_CullTransparentMesh: 0
+--- !u!114 &1758740812 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8506903102755383141, guid: 552bb8d4b675f624a81608226b61ad6f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8506903102504807428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3fa2ba3099a2f24788c29d5f50da5cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1847843234
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,6 +2152,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: GoalJ1
       objectReference: {fileID: 0}
+    - target: {fileID: 4174962806651772243, guid: f6a14bb19302f7442b7c8675bd4c26a9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174962806651772243, guid: f6a14bb19302f7442b7c8675bd4c26a9,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4174962806651772255, guid: f6a14bb19302f7442b7c8675bd4c26a9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2174,6 +2230,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RebondWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451906194956320993, guid: e4ce97955555d1a42a642802894f3ce1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451906194956320993, guid: e4ce97955555d1a42a642802894f3ce1,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5451906194956320994, guid: e4ce97955555d1a42a642802894f3ce1,
         type: 3}
