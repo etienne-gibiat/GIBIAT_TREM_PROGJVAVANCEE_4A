@@ -56,11 +56,11 @@ public class BallDeplacementScript : MonoBehaviour
             gameObject.transform.position += Direction * Time.deltaTime * speed;
         }
         else if (attrapedroite) {
-            Transform joueur = joueur1.gameObject.transform;
+            
             //gameObject.transform.parent = joueur1.gameObject.transform;
         }
         else if (attrapegauche) {
-            Transform joueur = joueur2.gameObject.transform;
+            
             //gameObject.transform.parent = joueur2.gameObject.transform;
         }
 

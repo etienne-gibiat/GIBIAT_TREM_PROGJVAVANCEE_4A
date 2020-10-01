@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     public void StartGame() {
         ball = Instantiate<GameObject>(BallPrefab, new Vector3(-5.5f, 0.75f, 0f), Quaternion.identity) as GameObject;
         agent.SetDestination(ball.transform.position);
+        BallDeplacementScript ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
     }
 
     public void Goal(string goal) {
