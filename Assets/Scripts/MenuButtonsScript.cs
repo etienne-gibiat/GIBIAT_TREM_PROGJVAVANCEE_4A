@@ -13,7 +13,7 @@ public class MenuButtonsScript : MonoBehaviour
         // Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
         if (GUI.Button(new Rect(Screen.width / 2 - 225, Screen.height / 2 -150, 480, 120), "Play"))
         {
-            Application.LoadLevel("mainScene");
+            Application.LoadLevel("MenuDiff");
         }
 
         if (GUI.Button(new Rect(Screen.width / 2 - 225, Screen.height / 2 + 50, 480, 120), "Quit"))

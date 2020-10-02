@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private NavMeshAgent agent;
 
+    [SerializeField]
+    private PauseMenuScript pauseMenuScript;
+
 
     private GameObject ball;
 
@@ -154,6 +157,8 @@ public class GameManager : MonoBehaviour
             textTimer.text = timer.ToString();
         }
         Time.timeScale = 0;
+        pauseMenuScript.isActive = true;
+        pauseMenuScript.isEnd = true;
         if(scoreJ1 > scoreJ2) {
             textWinner.text += "Winner J1";
         }
