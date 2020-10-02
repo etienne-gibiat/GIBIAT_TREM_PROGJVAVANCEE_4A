@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
                 case BUTTONA:
                     if (ballDeplacementScript.attrapedroite) {
                         ballDeplacementScript.Tirer(true);
+                        ballDeplacementScript.source.Play();
                     }
                     break;
                 default:
