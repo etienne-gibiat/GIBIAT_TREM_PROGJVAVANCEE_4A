@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private PauseMenuScript pauseMenuScript;
 
+    [SerializeField]
+    private Text ResumeButton;
+
 
     private GameObject ball;
 
@@ -125,7 +128,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartGame() {
-        ball = Instantiate<GameObject>(BallPrefab, new Vector3(-5.5f, 0.75f, 0f), Quaternion.identity) as GameObject;
+        ball = Instantiate<GameObject>(BallPrefab, new Vector3(-5.5f, 1f, 0f), Quaternion.identity) as GameObject;
         ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
         if (typeIA == 1) {
             ballDeplacementScript.estIA = true;
@@ -159,6 +162,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         pauseMenuScript.isActive = true;
         pauseMenuScript.isEnd = true;
+        ResumeButton.text = "Restart";
         if(scoreJ1 > scoreJ2) {
             textWinner.text += "Winner J1";
         }
