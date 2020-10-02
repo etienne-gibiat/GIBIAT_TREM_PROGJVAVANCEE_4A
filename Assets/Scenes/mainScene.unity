@@ -13008,7 +13008,6 @@ MonoBehaviour:
   ResumeButton: {fileID: 1881899296}
   joueur1: {fileID: 60743520}
   joueur2: {fileID: 437831221}
-  typeIA: 1
   scoreJ1: 0
   scoreJ2: 0
   timer: 60
@@ -26911,6 +26910,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425212072338478651, guid: f10c394033f254647873f3d28a75a062,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f10c394033f254647873f3d28a75a062, type: 3}

@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private BallDeplacementScript ballDeplacementScript;
 
-    public int typeIA = 1;
+    public static int typeIA = 2;
 
     public int scoreJ1 = 0;
 
