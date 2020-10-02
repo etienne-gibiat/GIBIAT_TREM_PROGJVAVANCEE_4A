@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1183409601}
   - component: {fileID: 3425212072338478651}
   - component: {fileID: 1967712696987529280}
+  - component: {fileID: 8940513719772453404}
   m_Layer: 9
   m_Name: Cops
   m_TagString: Raquette droite
@@ -102,6 +103,7 @@ MonoBehaviour:
   AxisFire1Name: Fire1
   AxisFire2Name: Fire2
   estIA: 0
+  rb: {fileID: 0}
   peutmarcher: 1
 --- !u!54 &1183409601
 Rigidbody:
@@ -155,3 +157,22 @@ CapsuleCollider:
   m_Height: 2.1222806
   m_Direction: 1
   m_Center: {x: -0.0019368529, y: 1.0611403, z: 0.07858753}
+--- !u!95 &8940513719772453404
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283017171755564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 33221564acd259746aeeb625bd959af3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
