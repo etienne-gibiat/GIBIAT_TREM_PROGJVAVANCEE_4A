@@ -69,7 +69,8 @@ public class GameManager : MonoBehaviour
         ballDeplacementScript = ball.GetComponent<BallDeplacementScript>();
         if(typeIA == 1) {
             ballDeplacementScript.estIA = true;
-        }
+        }else if (typeIA == 2)
+            ballDeplacementScript.estJoueur = true;
         //playerDeplacementScript.ballDeplacementScript = ballDeplacementScript;
     }
 
@@ -109,6 +110,9 @@ public class GameManager : MonoBehaviour
             }
             iARandomWait = true;
             StartCoroutine(IAWait());
+        }
+        else {
+            agent.enabled = false;
         }
         
         if(ballDeplacementScript.attrapegauche)
