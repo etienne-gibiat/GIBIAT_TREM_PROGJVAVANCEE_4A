@@ -16,7 +16,12 @@ public class MenuButtonsScript : MonoBehaviour
             Application.LoadLevel("MenuDiff");
         }
 
-        if (GUI.Button(new Rect(Screen.width / 2 - 225, Screen.height / 2 + 50, 480, 120), "Quit"))
+        if (GUI.Button(new Rect(Screen.width / 2 - 225, Screen.height / 2 + 25, 480, 120), "Options"))
+        {
+            Application.LoadLevel("MenuOption");
+        }
+
+        if (GUI.Button(new Rect(Screen.width / 2 - 225, Screen.height / 2 + 200, 480, 120), "Quit"))
         {
             Application.Quit();
         }
