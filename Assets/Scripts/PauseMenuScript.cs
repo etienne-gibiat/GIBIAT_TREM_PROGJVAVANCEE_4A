@@ -14,7 +14,7 @@ public class PauseMenuScript : MonoBehaviour
     public bool isActive = false;
     public bool isEnd = false;
 
-    // Update is called once per frame
+
     void Update()
     {
         if(isActive)

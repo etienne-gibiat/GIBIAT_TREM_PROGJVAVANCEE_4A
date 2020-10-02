@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private AudioSource source;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         textWinner.gameObject.SetActive(false);
@@ -71,11 +71,11 @@ public class GameManager : MonoBehaviour
             ballDeplacementScript.estIA = true;
         }else if (typeIA == 2)
             ballDeplacementScript.estJoueur = true;
-        //playerDeplacementScript.ballDeplacementScript = ballDeplacementScript;
         source = GetComponent<AudioSource>();
+
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if(typeIA == 0) {

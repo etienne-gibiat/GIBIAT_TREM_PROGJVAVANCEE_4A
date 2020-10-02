@@ -14,27 +14,16 @@ public class GoalScript : MonoBehaviour
 
     
 
-    // [SerializeField]
-    // private GameManager gameManager;
-    // Start is called before the first frame update
+    
     void Start()
     {
         source = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
 
-    //void OnTriggerEnter(Collider other) {
-    //    if ((BallMask.value & (1 << other.gameObject.layer)) > 0) {
-    //        Destroy(other.gameObject);
-    //        gameManager.StartGame();
-    //    }
-    //}
+    
 
     public void OnCollisionEnter(Collision collision) {
         if ((BallMask.value & (1 << collision.gameObject.layer)) > 0) { 
