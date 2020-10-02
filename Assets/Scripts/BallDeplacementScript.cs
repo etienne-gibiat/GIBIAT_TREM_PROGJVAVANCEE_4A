@@ -42,6 +42,8 @@ public class BallDeplacementScript : MonoBehaviour
 
     private bool entraindetirer = false;
 
+    public AudioSource source;
+
     Rigidbody rb;
 
 
@@ -54,7 +56,7 @@ public class BallDeplacementScript : MonoBehaviour
         float zDirection = Random.Range(-0.5f, 0.5f);
         Direction = new Vector3(xDirection, 0.0f, zDirection);
         Direction.Normalize();
-
+        source = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -70,6 +72,7 @@ public class BallDeplacementScript : MonoBehaviour
         else if (attrapedroite && !isInLoopCoroutineTirer && !estIA) {
             Transform joueur = joueur1.gameObject.transform;
             StartCoroutine(nextTir());
+            source.Play();
             //Tirer(true);
             //gameObject.transform.parent = joueur1.gameObject.transform;
         }
@@ -81,17 +84,20 @@ public class BallDeplacementScript : MonoBehaviour
         if (Input.GetAxisRaw("Fire1Sec") > 0 && attrapedroite) {
             
             Tirer(true);
+            source.Play();
         }
 
         if (Input.GetAxisRaw("Fire1") > 0 && attrapegauche) {
             
             Tirer(false);
+            source.Play();
         }
 
         if (Input.GetAxisRaw("Fire2") > 0 && attrapegauche && !isInLoopCoroutineTirerZigZag)
         {
             Debug.Log(isInLoopCoroutineTirerZigZag);
             StartCoroutine(nextDirectionTir());
+            source.Play();
         }
 
 /*        if (Input.GetAxisRaw("escape") > 0)
@@ -185,6 +191,7 @@ public class BallDeplacementScript : MonoBehaviour
             //Direction = new Vector3(Direction.x, Direction.y, -Direction.z);
             Direction = Vector3.Reflect(Direction, Vector3.forward);
             speed += 1.5f;
+            source.Play();
         }
         else if ((PlayerMask.value & (1 << collision.gameObject.layer)) > 0) {
             if (collision.gameObject.tag == "Raquette droite") {
@@ -202,5 +209,6 @@ public class BallDeplacementScript : MonoBehaviour
             speed += 1f;
             //gameObject.transform.position = joueur.gameObject.transform.position;
         }
+
     }
 }
