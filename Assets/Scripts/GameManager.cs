@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
         if(typeIA == 0) {
             agent.SetDestination(ball.transform.position);
         }else if (typeIA == 1 && !iARandomWait) {
+            agent.enabled = false;
             int randomAction = Random.Range(0, 6);
             switch (randomAction) {
                 case RIGHT:

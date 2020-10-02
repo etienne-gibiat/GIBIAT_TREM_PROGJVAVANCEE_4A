@@ -31,6 +31,9 @@ public class PlayerDeplacementScript : MonoBehaviour
     [SerializeField]
     bool estIA;
 
+    [SerializeField]
+    Rigidbody rb;
+
 
 
     /*[SerializeField]
@@ -51,8 +54,8 @@ public class PlayerDeplacementScript : MonoBehaviour
     }
 
     void Update() {
-       
-        
+
+        rb.velocity = Vector3.zero;
             if (Input.GetAxisRaw(AxisHorizontalName) < 0) {
                 Deplacement(RIGHT);
             }
