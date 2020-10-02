@@ -1,25 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OptionMenuScript : MonoBehaviour
 {
 
     bool isFullScreen = true;
 
-    // Update is called once per frame
+    
     void Update()
     {
         
     }
 
-    public void SetFullScreen(bool fullScreen) {
-        isFullScreen = fullScreen;
+    public void SetFullScreen(Toggle fullScreen) {
+        isFullScreen = fullScreen.isOn;
+        Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, isFullScreen);
     }
 
-        public void SELECT_RESOLUTION(int resolution) {
+        public void SELECT_RESOLUTION(Dropdown resolution) {
 
-        switch (resolution) {
+        switch (resolution.value) {
             case 0:
                 Screen.SetResolution(1920, 1080, isFullScreen);
                 break;

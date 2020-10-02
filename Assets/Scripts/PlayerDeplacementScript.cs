@@ -36,8 +36,7 @@ public class PlayerDeplacementScript : MonoBehaviour
 
 
 
-    /*[SerializeField]
-    Rigidbody rb;*/
+    
     private bool m_isAxisInUse = false;
     private bool inputDash = false;
 
@@ -47,11 +46,7 @@ public class PlayerDeplacementScript : MonoBehaviour
     public bool peutmarcher = true;
 
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     void Update() {
 
