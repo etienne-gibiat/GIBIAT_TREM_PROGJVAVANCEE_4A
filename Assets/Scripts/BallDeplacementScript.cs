@@ -26,6 +26,7 @@ public class BallDeplacementScript : MonoBehaviour
     private Vector3 Direction = Vector3.left;
 
     public bool estIA;
+    public bool estJoueur;
 
 
     public bool attrapedroite = false;
@@ -69,7 +70,7 @@ public class BallDeplacementScript : MonoBehaviour
             
             gameObject.transform.position += Direction * Time.deltaTime * speed;
         }
-        else if (attrapedroite && !isInLoopCoroutineTirer && !estIA) {
+        else if (attrapedroite && !isInLoopCoroutineTirer && !estIA && !estJoueur) {
             Transform joueur = joueur1.gameObject.transform;
             StartCoroutine(nextTir());
             source.Play();

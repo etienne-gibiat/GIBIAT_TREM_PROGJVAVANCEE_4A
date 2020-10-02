@@ -11465,13 +11465,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0, y: 0.70272, z: -0.7114666, w: 0}
-  m_LocalPosition: {x: -5.51, y: 50.1, z: -0.8}
+  m_LocalRotation: {x: -0, y: 0.78957266, z: -0.6136571, w: 0}
+  m_LocalPosition: {x: -5.51, y: 15.7, z: 2.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90.70801, y: 180, z: -0.000015258789}
+  m_LocalEulerAnglesHint: {x: 75.70901, y: 180.00002, z: 0}
 --- !u!95 &963194229
 Animator:
   serializedVersion: 3
@@ -27207,7 +27207,7 @@ PrefabInstance:
     - target: {fileID: 3239462382628620620, guid: f10c394033f254647873f3d28a75a062,
         type: 3}
       propertyPath: estIA
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3239462382628620620, guid: f10c394033f254647873f3d28a75a062,
         type: 3}
