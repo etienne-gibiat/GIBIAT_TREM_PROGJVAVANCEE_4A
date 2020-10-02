@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     private const int UP = 3;
     private bool iARandomWait = false;
 
-
+    private AudioSource source;
 
     
     void Start()
@@ -71,7 +71,8 @@ public class GameManager : MonoBehaviour
             ballDeplacementScript.estIA = true;
         }else if (typeIA == 2)
             ballDeplacementScript.estJoueur = true;
-        
+        source = GetComponent<AudioSource>();
+
     }
 
     
@@ -139,6 +140,7 @@ public class GameManager : MonoBehaviour
         if (typeIA == 1) {
             ballDeplacementScript.estIA = true;
         }
+
     }
 
     public void Goal(string goal) {
@@ -165,6 +167,7 @@ public class GameManager : MonoBehaviour
             timer--;
             textTimer.text = timer.ToString();
         }
+        source.Play();
         Time.timeScale = 0;
         pauseMenuScript.isActive = true;
         pauseMenuScript.isEnd = true;
@@ -180,5 +183,6 @@ public class GameManager : MonoBehaviour
         }
         
         textWinner.gameObject.SetActive(true);
+        
     }
 }
